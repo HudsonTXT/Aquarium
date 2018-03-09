@@ -3,7 +3,7 @@ var game = {
     coins: 0,
     speed: 10000, //Скорость (таймер)
     timerNext: 0, // Переменная для обновления таймера
-    time: 10 * 1000 * 100, //Время игры
+    time: 10 * 1000 * 15, //Время игры
     clicker: 0,
     init: function () {
         //Инициализация игры
@@ -113,7 +113,7 @@ var fishes = {
             speed: 2500,
             coins: 6,
         }
-    }
+    },
 };
 
 var Fish = function (type) {
@@ -150,6 +150,10 @@ Fish.hide = function () {
 * Нажимаем / убиваем рыбу
 * */
 Fish.kill = function () {
+    if (!game.clicker){
+        new Audio('/mp3/calm.mp3').play();
+    }
+
     $(this).clearQueue().animate({opacity: 0, top: "-=20%"}, 200, 'linear', function () {
         $(this).remove();
     });
@@ -180,4 +184,3 @@ function randomInteger(min, max) {
     rand = Math.floor(rand);
     return rand;
 }
-
