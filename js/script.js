@@ -151,7 +151,7 @@ Fish.hide = function () {
 * */
 Fish.kill = function () {
     if (!game.clicker){
-        new Audio('/mp3/calm.mp3').play();
+        new Audio('../mp3/calm.mp3').play();
     }
 
     $(this).clearQueue().animate({opacity: 0, top: "-=20%"}, 200, 'linear', function () {
