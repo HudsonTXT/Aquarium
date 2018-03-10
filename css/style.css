@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Pangolin&subset=cyrillic');
 
-:active, :hover, :focus {
-    outline: 0;
-    outline-offset: 0;
-}
-
 html, body {
     width: 100%;
     height: 100%;
@@ -13,6 +8,8 @@ html, body {
 body {
     color: #333333;
     font: 14px 'Pangolin';
+    background: url("../img/bg.jpg") top center no-repeat ;
+    background-size: cover;
 }
 
 .container {
@@ -20,9 +17,9 @@ body {
     height: 100%;
     margin: auto;
     overflow: hidden;
-    background: #eeeeee;
+    /*background: #eeeeee;*/
     position: relative;
-    background-image: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
+    /*background-image: linear-gradient(to top, #209cff 0%, #68e0cf 100%);*/
 }
 
 .fish {
@@ -108,4 +105,17 @@ body {
     100% {
         font-size: 72px;
     }
+}
+
+
+.end{
+    display: none;
+    flex: 1;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.end_header{
+    font-size: 72px;
 }

@@ -1,9 +1,9 @@
 var game = {
     score: 0, //Очки
     coins: 0,
-    speed: 10000, //Скорость (таймер)
+    speed: 7000, //Скорость (таймер)
     timerNext: 0, // Переменная для обновления таймера
-    time: 10 * 1000 * 15, //Время игры
+    time: 10 * 1000 * 3, //Время игры
     clicker: 0,
     init: function () {
         //Инициализация игры
@@ -47,6 +47,9 @@ var game = {
     end: function () {
         $('.fish').remove();
         $('#scores_timer').removeClass('timeDown');
+        $('.game').fadeOut(500, function () {
+            $('.end').css('display', 'flex').fadeIn();
+        });
     }
 };
 
@@ -80,37 +83,37 @@ var fishes = {
     type: {
         1: {
             name: "Проста рыба",
-            speed: 5000,
+            speed: 100,
             coins: 1,
         },
         2: {
             name: "Краб",
-            speed: 4500,
+            speed: 90,
             coins: 2,
         },
         3: {
             name: "Рыба - ёж",
-            speed: 4000,
+            speed: 80,
             coins: 3,
         },
         4: {
             name: "Рыба - клоун",
-            speed: 3500,
+            speed: 70,
             coins: 4,
         },
         5: {
             name: "Рыба - зелёнка",
-            speed: 3000,
+            speed: 60,
             coins: 5,
         },
         6: {
             name: "Акула",
-            speed: 1500,
+            speed: 30,
             coins: 10,
         },
         7: {
             name: "Рыба - треугольник",
-            speed: 2500,
+            speed: 50,
             coins: 6,
         }
     },
@@ -123,7 +126,7 @@ var Fish = function (type) {
     this.type = type; //Тип
     this.top = randomInteger(10, 90); //Рандомная высота
     this.left = randomInteger(1, 10); //Рандомный отступ от левого крана при появлении
-    this.speed = randomInteger(fishes.type[this.type].speed / 1.1, fishes.type[this.type].speed * 1.1); //Рандомная скорость
+    this.speed = randomInteger((game.speed / 100 * fishes.type[this.type].speed) / 1.1, (game.speed / 100 * fishes.type[this.type].speed) * 1.1); //Рандомная скорость
     this.coins = fishes.type[this.type].coins; //Монеты за улов рыбы
     this.view =
         $('<div class="fish fish' + this.type + '"></div>')
@@ -136,7 +139,7 @@ var Fish = function (type) {
     * Добавляем рыбу на игровое поле
     * */
     this.add = function () {
-        $('.container').append(this.view)
+        $('.game').append(this.view)
     };
 };
 /*

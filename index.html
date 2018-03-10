@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Aquarium</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, max-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="container start" hidden >
+    <div class="start_form">
+        <div class="logo">
 
-<div class="container">
+        </div>
+        <div class="start_form__name">
+
+        </div>
+        <div class="start_form_button">
+
+        </div>
+    </div>
+</div>
+<div class="container game">
     <div class="scores">
         <img src="img/fish.svg" alt="">
         <span id="scores_value">0</span>
@@ -18,11 +30,15 @@
         <span id="scores_money">0</span>
         <br>
         <img src="img/clock.svg" alt="">
-        <span id="scores_timer" class="">30</span>
+        <span id="scores_timer" class="">00:00</span>
 
         <br>
         <img src="img/clicker.svg" alt="" class="toggleClicker">
     </div>
+</div>
+
+<div class="container end">
+    <div class="end_header">Игра окончена</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
