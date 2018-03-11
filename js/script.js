@@ -1,12 +1,46 @@
+var defaults = {
+    speed: 7000,
+    time: 10 * 1000
+};
 var game = {
     score: 0, //Очки
     coins: 0,
-    speed: 7000, //Скорость (таймер)
+    speed: defaults.speed, //Скорость (таймер)
     timerNext: 0, // Переменная для обновления таймера
-    time: 10 * 1000 * 3, //Время игры
+    time: defaults.time, //Время игры
     clicker: 0,
+    nick: '',
+    updateTimer: function () {
+        min = parseInt(game.time / (1000 * 60) % 60);
+        if (min < 10) min = "0" + min;
+        sec = parseInt((game.time / 1000) % 60);
+        if (sec < 10) sec = "0" + sec;
+
+        $('#scores_timer').text(min + ':' + sec);
+        if (game.time <= 5000 && game.time > 0) {
+            $('#scores_timer').addClass('timeDown');
+        }
+    },
+    setDefaults: function () {
+        game.speed = defaults.speed;
+        game.time = defaults.time;
+        game.score = 0;
+        game.coins = 0;
+        game.timerNext = 0;
+        game.clicker = 0;
+
+        $('#scores_money').text('0');
+        $('#scores_value').text('0');
+        game.updateTimer();
+
+    },
     init: function () {
+        game.setDefaults();
+        $('.username').text(game.nick);
         //Инициализация игры
+        $('.start').fadeOut(100);
+        $('.game').fadeIn(100);
+
         setInterval(fishes.push, 100); //Запуск рыбок
 
         setInterval(function () {
@@ -15,32 +49,28 @@ var game = {
                 $('.fish').remove();
                 return;
             }
-
             /*
             * Timer
             * */
             game.time -= 1000;
 
-            min = parseInt(game.time / (1000 * 60) % 60);
-            if (min < 10) min = "0" + min;
-            sec = parseInt((game.time / 1000) % 60);
-            if (sec < 10) sec = "0" + sec;
-
-            $('#scores_timer').text(min + ':' + sec);
-            if (game.time <= 5000 && game.time > 0) {
-                $('#scores_timer').addClass('timeDown');
-            }
+            game.updateTimer();
 
         }, 1000);
         game.autoClick();
     },
+    replay: function(){
+        $('.end').fadeOut(100);
+        $('.game').fadeIn(100);
+        game.setDefaults();
+    },
     autoClick: function () {
 
-            setInterval(function () {
-                if (game.clicker && game.time > 0) {
-                    $('.fish').eq(-1).trigger('click')
-                }
-            }, 10);
+        setInterval(function () {
+            if (game.clicker && game.time > 0) {
+                $('.fish').eq(-1).trigger('click')
+            }
+        }, 10);
 
 
     },
@@ -50,6 +80,8 @@ var game = {
         $('.game').fadeOut(500, function () {
             $('.end').css('display', 'flex').fadeIn();
         });
+        $('.results_fishes span').text(game.score);
+        $('.results_moneys span').text(game.coins);
     }
 };
 
@@ -64,7 +96,9 @@ var fishes = {
         var now = (new Date).getTime();
         if (game.timerNext && (game.timerNext - randomInteger(0, game.speed / 2)) > now) return;
         if (game.time <= 0) {
-            game.end();
+            if($('.end').css('display') === 'none'){
+                game.end();
+            }
             return;
         }
         game.timerNext = now + game.speed;
@@ -153,7 +187,7 @@ Fish.hide = function () {
 * Нажимаем / убиваем рыбу
 * */
 Fish.kill = function () {
-    if (!game.clicker){
+    if (!game.clicker) {
         new Audio('mp3/calm.mp3').play();
     }
 
@@ -173,7 +207,25 @@ Fish.kill = function () {
 
 
 $(function () {
-    game.init();
+    $('.start_form__name input').on('keypress', function () {
+        game.nick = $(this).val();
+        if (game.nick) {
+            $('.start_form_button').fadeIn();
+        }
+    });
+    $('.start_form_button').on('click', function () {
+        game.nick = $('.start_form__name input').val();
+        if (game.nick) {
+            game.init();
+        } else {
+            $(this).fadeOut();
+        }
+    });
+
+    $('.game_replay').on('click', function () {
+        game.replay();
+
+    });
 
     $('.toggleClicker').click(function () {
         console.log("Cliker toggle");

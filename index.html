@@ -8,20 +8,21 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container start" hidden >
+<div class="container start">
     <div class="start_form">
         <div class="logo">
-
+            <img src="img/logo.png" alt="">
         </div>
         <div class="start_form__name">
-
+            <input type="text" name="name" id="name" placeholder="Введите имя..." maxlength="11">
         </div>
-        <div class="start_form_button">
-
+        <div class="start_form_button" hidden>
+            <input type="submit" value="Играть">
         </div>
     </div>
 </div>
-<div class="container game">
+<div class="container game" hidden>
+    <div class="username"></div>
     <div class="scores">
         <img src="img/fish.svg" alt="">
         <span id="scores_value">0</span>
@@ -37,8 +38,21 @@
     </div>
 </div>
 
-<div class="container end">
-    <div class="end_header">Игра окончена</div>
+<div class="container end" hidden>
+    <div class="end_content">
+        <div class="end_header">Игра окончена, <span class="username"></span></div>
+        <div class="end_results">
+            <div class="results_fishes end_result">
+                <img src="img/fish.svg" alt="">
+                <span>0</span>
+            </div>
+            <div class="results_moneys end_result">
+                <img src="img/coins.svg" alt="">
+                <span>0</span>
+            </div>
+        </div>
+        <input type="submit" value="Повторить" class="btn game_replay">
+    </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

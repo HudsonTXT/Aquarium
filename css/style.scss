@@ -1,23 +1,28 @@
-@import url("https://fonts.googleapis.com/css?family=Pangolin&subset=cyrillic");
-:active, :focus {
-  outline: none; }
+@import url('https://fonts.googleapis.com/css?family=Pangolin&subset=cyrillic');
+
+:active, :focus{
+  outline: none;
+}
 
 html, body {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+}
 
 body {
   color: #333333;
   font: 14px 'Pangolin';
   background: url("../img/bg.jpg") top center no-repeat;
-  background-size: cover; }
+  background-size: cover;
+}
 
 .container {
   width: 100%;
   height: 100%;
   margin: auto;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+}
 
 .fish {
   width: 20%;
@@ -25,30 +30,37 @@ body {
   position: absolute;
   left: 0;
   top: 30%;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .fish1 {
-  background: url("../img/fishes/fish-7.svg") center no-repeat; }
+  background: url("../img/fishes/fish-7.svg") center no-repeat;
+}
 
 .fish2 {
-  background: url("../img/fishes/crab.svg") center no-repeat; }
+  background: url("../img/fishes/crab.svg") center no-repeat;
+}
 
 .fish3 {
-  background: url("../img/fishes/fish-3.svg") center no-repeat; }
+  background: url("../img/fishes/fish-3.svg") center no-repeat;
+}
 
 .fish4 {
-  background: url("../img/fishes/fish-1.svg") center no-repeat; }
+  background: url("../img/fishes/fish-1.svg") center no-repeat;
+}
 
 .fish5 {
-  background: url("../img/fishes/fish-9.svg") center no-repeat; }
+  background: url("../img/fishes/fish-9.svg") center no-repeat;
+}
 
 .fish6 {
-  background: url("../img/fishes/shark.svg") center no-repeat; }
+  background: url("../img/fishes/shark.svg") center no-repeat;
+}
 
 .fish7 {
-  background: url("../img/fishes/fish-12.svg") center no-repeat; }
-
-.game .username {
+  background: url("../img/fishes/fish-12.svg") center no-repeat;
+}
+.game .username{
   float: left;
   margin-left: 1%;
   -webkit-user-select: none;
@@ -58,8 +70,8 @@ body {
   text-align: left;
   font-weight: bold;
   vertical-align: middle;
-  font-size: 72px; }
-
+  font-size: 72px;
+}
 .scores {
   float: right;
   margin-right: 1%;
@@ -67,79 +79,107 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  text-align: right; }
-  .scores img {
+  text-align: right;
+
+  img {
     width: 40px;
     height: auto;
     vertical-align: middle;
     opacity: .4;
-    margin-right: 15px; }
-  .scores span {
+    margin-right: 15px;
+  }
+  span {
     font-weight: bold;
     vertical-align: middle;
-    font-size: 72px; }
+    font-size: 72px;
+  }
+}
 
 #scores_value {
-  margin-right: 15px; }
+  margin-right: 15px;
+}
 
 .timeDown {
-  animation: timeDown .5s ease-in-out infinite backwards; }
+  animation: timeDown .5s ease-in-out infinite backwards;
+}
 
 .toggleClicker {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 @keyframes timeDown {
   0% {
-    font-size: 72px; }
+    font-size: 72px;
+  }
   50% {
-    font-size: 100px; }
+    font-size: 100px;
+  }
   100% {
-    font-size: 72px; } }
+    font-size: 72px;
+  }
+}
+
 .end, .start {
   display: flex;
   flex: 1;
   justify-content: center;
   flex-direction: column;
-  text-align: center; }
+  text-align: center;
+}
 
 .end {
-  display: none; }
-  .end .end_results {
+  display: none;
+
+  .end_results{
     box-sizing: border-box;
     padding: 30px 0;
     border-radius: 5px;
-    margin: 10px 20%;
-    background: rgba(255, 255, 255, 0.3);
+    margin:10px 20%;
+    background: rgba(#fff, .3);
     text-align: center;
-    white-space: nowrap; }
-    .end .end_results .end_result {
+    white-space: nowrap;
+
+    .end_result{
       display: inline-block;
       vertical-align: top;
       font-size: 48px;
       text-align: center;
-      width: 50%; }
-      .end .end_results .end_result:first-child {
-        border-right: 1px solid rgba(51, 51, 51, 0.5); }
-      .end .end_results .end_result img {
+      width: 50%;
+      &:first-child{
+        border-right: 1px solid rgba(#333, .5);
+      }
+      img{
         width: 48px;
         height: auto;
-        vertical-align: middle; }
+        vertical-align: middle;
+      }
+    }
+
+
+  }
+}
 
 .end_header {
-  font-size: 72px; }
+  font-size: 72px;
+}
 
 .start_form {
-  align-self: center; }
-  .start_form .logo {
-    margin-bottom: 36px; }
-    .start_form .logo img {
+  align-self: center;
+
+  .logo {
+    margin-bottom: 36px;
+
+
+    img {
       width: 100%;
       height: auto;
       max-width: 300px;
       user-select: none;
       user-drag: none;
-      -webkit-user-drag: none; }
-  .start_form input[type=text] {
+      -webkit-user-drag: none;
+    }
+  }
+  input[type=text] {
     width: 300px;
     height: 45px;
     text-align: center;
@@ -148,14 +188,20 @@ body {
     font-size: 18px;
     box-sizing: border-box;
     margin-top: 18px;
-    transition: all .2s ease-in-out; }
-    .start_form input[type=text]:focus {
-      border-color: black; }
+    transition: all .2s ease-in-out;
 
-.start_form input[type=submit], .btn {
+    &:focus {
+      border-color: darken(#333, 30%);
+    }
+  }
+  input[type=submit]{
+    @extend %button;
+  }
+}
+%button {
   width: 300px;
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.40);
   border: 3px solid #333333;
   height: 45px;
   margin-top: 18px;
@@ -165,12 +211,20 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: all 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-  position: relative; }
-  .start_form input[type=submit]:hover, .btn:hover {
+  position: relative;
+
+  &:hover {
     box-shadow: 0 4px 11px #009bab;
     transform: translateY(-2px);
     background: #333333;
     border-color: #333333;
-    color: #fff; }
+    color: #fff;
+  }
+  &:active {
 
-/*# sourceMappingURL=style.css.map */
+  }
+}
+
+.btn{
+  @extend %button;
+}
