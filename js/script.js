@@ -10,6 +10,7 @@ var game = {
     time: defaults.time, //Время игры
     clicker: 0,
     nick: '',
+    allFish: 0,
     updateTimer: function () {
         min = parseInt(game.time / (1000 * 60) % 60);
         if (min < 10) min = "0" + min;
@@ -59,20 +60,17 @@ var game = {
         }, 1000);
         game.autoClick();
     },
-    replay: function(){
+    replay: function () {
         $('.end').fadeOut(100);
         $('.game').fadeIn(100);
         game.setDefaults();
     },
     autoClick: function () {
-
         setInterval(function () {
             if (game.clicker && game.time > 0) {
-                $('.fish').eq(-1).trigger('click')
+                $('.fish').trigger('click');
             }
-        }, 10);
-
-
+        }, 300);
     },
     end: function () {
         $('.fish').remove();
@@ -96,7 +94,7 @@ var fishes = {
         var now = (new Date).getTime();
         if (game.timerNext && (game.timerNext - randomInteger(0, game.speed / 2)) > now) return;
         if (game.time <= 0) {
-            if($('.end').css('display') === 'none'){
+            if ($('.end').css('display') === 'none') {
                 game.end();
             }
             return;
@@ -107,7 +105,10 @@ var fishes = {
     },
     spawn: function () {
         //Показываем рыб
-        for (var i = 0; i < randomInteger(1, 5); i++) new Fish(randomInteger(1, 7)).add();
+        for (var i = 0; i < randomInteger(1, 5); i++) {
+            new Fish(randomInteger(1, 7)).add();
+            game.allFish++;
+        }
 
         /* *
         * Усложнение уровня
