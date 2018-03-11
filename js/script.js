@@ -1,6 +1,6 @@
 var defaults = {
     speed: 7000,
-    time: 10 * 1000
+    time: 30 * 1000
 };
 var game = {
     score: 0, //Очки
